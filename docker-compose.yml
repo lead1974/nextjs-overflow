@@ -1,0 +1,25 @@
+# networks:
+#   custom:
+#     ipam:
+#       config:
+#         - subnet: 10.5.0.0/16
+
+services:
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=mongopw!
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodata:/var/lib/mongodb/data
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --eval 'db.adminCommand({ping: 1})'"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  mongodata:
