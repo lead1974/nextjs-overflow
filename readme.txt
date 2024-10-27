@@ -9,3 +9,7 @@ https://dashboard.clerk.com/last-active?path=api-keys
 # section 4 mongodb
 npm i mongoose axios dayjs
 
+npm i @uiw/react-codemirror
+npm i @codemirror/lang-javascript
+
+
